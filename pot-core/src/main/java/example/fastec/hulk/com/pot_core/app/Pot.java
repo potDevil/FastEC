@@ -26,4 +26,8 @@ public final class Pot {
     private static HashMap<String , Object> getConfiguration() {
         return Configurator.getInstance().getPotConfigs();
     }
+
+    public static Context getApplication() {
+        return (Context) getConfiguration().get(ConfigType.APPLICATION_CONTEXT.name());
+    }
 }

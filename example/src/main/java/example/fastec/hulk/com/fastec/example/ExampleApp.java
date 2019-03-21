@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.fastec;
+package example.fastec.hulk.com.fastec.example;
 
 import android.app.Application;
 
