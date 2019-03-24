@@ -23,7 +23,7 @@ public final class Pot {
      * 获取配置信息
      * @return
      */
-    private static HashMap<String , Object> getConfiguration() {
+    public static HashMap<String , Object> getConfiguration() {
         return Configurator.getInstance().getPotConfigs();
     }
 

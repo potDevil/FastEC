@@ -14,6 +14,7 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
  */
 public abstract class BaseDelegate extends SwipeBackFragment{
     public abstract Object setLayout();
+    public abstract void onBindView();
 
     @Nullable
     @Override
@@ -27,6 +28,7 @@ public abstract class BaseDelegate extends SwipeBackFragment{
         if(rootView != null) {
             // 绑定资源
         }
+        onBindView();
         return rootView;
     }
 
