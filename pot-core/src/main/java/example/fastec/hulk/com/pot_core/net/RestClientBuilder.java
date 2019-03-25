@@ -1,5 +1,7 @@
 package example.fastec.hulk.com.pot_core.net;
 
+import android.content.Context;
+
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -7,6 +9,7 @@ import example.fastec.hulk.com.pot_core.net.callback.IError;
 import example.fastec.hulk.com.pot_core.net.callback.IFailure;
 import example.fastec.hulk.com.pot_core.net.callback.IRequest;
 import example.fastec.hulk.com.pot_core.net.callback.ISuccess;
+import example.fastec.hulk.com.pot_core.ui.LoaderStyle;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -22,6 +25,8 @@ public class RestClientBuilder {
     private IFailure mIFailure;
     private IError mIError;
     private RequestBody mBody;
+    private LoaderStyle mLoaderStyle;
+    private Context mContext;
 
     RestClientBuilder() {
     }
@@ -66,7 +71,19 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder loader(Context context, LoaderStyle style) {
+        this.mContext = context;
+        this.mLoaderStyle = style;
+        return this;
+    }
+
+    public final RestClientBuilder loader(Context context) {
+        this.mContext = context;
+        this.mLoaderStyle = LoaderStyle.BallClipRotatePulseIndicator;
+        return this;
+    }
+
     public final RestClient build() {
-        return new RestClient(mUrl, PARAMS, mIRequest, mISuccess, mIFailure, mIError, mBody);
+        return new RestClient(mUrl, PARAMS, mIRequest, mISuccess, mIFailure, mIError, mBody, mLoaderStyle, mContext);
     }
 }

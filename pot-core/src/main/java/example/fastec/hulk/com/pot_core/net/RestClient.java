@@ -1,5 +1,7 @@
 package example.fastec.hulk.com.pot_core.net;
 
+import android.content.Context;
+
 import java.util.WeakHashMap;
 
 import example.fastec.hulk.com.pot_core.net.callback.IError;
@@ -7,6 +9,8 @@ import example.fastec.hulk.com.pot_core.net.callback.IFailure;
 import example.fastec.hulk.com.pot_core.net.callback.IRequest;
 import example.fastec.hulk.com.pot_core.net.callback.ISuccess;
 import example.fastec.hulk.com.pot_core.net.callback.RequestCallbacks;
+import example.fastec.hulk.com.pot_core.ui.LoaderStyle;
+import example.fastec.hulk.com.pot_core.ui.PotLoader;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +27,8 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private LoaderStyle LOADER_STYLE;
+    private final Context CONTEXT;
 
     public RestClient(String url,
                       WeakHashMap<String, Object> params,
@@ -30,7 +36,9 @@ public class RestClient {
                       ISuccess success,
                       IFailure failure,
                       IError error,
-                      RequestBody body) {
+                      RequestBody body,
+                      LoaderStyle loaderStyle,
+                      Context context) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -38,6 +46,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.LOADER_STYLE = loaderStyle;
+        this.CONTEXT = context;
     }
 
     public static RestClientBuilder builder() {
@@ -50,6 +60,10 @@ public class RestClient {
 
         if (REQUEST != null) {
             REQUEST.onRequestStart();
+        }
+
+        if(LOADER_STYLE != null) {
+            PotLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
 
         switch (method) {
@@ -79,7 +93,8 @@ public class RestClient {
                 REQUEST,
                 SUCCESS,
                 FAILURE,
-                ERROR
+                ERROR,
+                LOADER_STYLE
         );
     }
 

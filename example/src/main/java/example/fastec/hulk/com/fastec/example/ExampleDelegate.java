@@ -28,6 +28,7 @@ public class ExampleDelegate extends PotDelegate {
         RestClient.builder()
                 .url("http://news.baidu.com")
 //                .params("", "")
+                .loader(getContext())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
