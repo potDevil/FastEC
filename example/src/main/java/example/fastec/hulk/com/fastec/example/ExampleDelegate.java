@@ -8,6 +8,7 @@ import example.fastec.hulk.com.pot_core.delegates.PotDelegate;
 import example.fastec.hulk.com.pot_core.net.RestClient;
 import example.fastec.hulk.com.pot_core.net.callback.IError;
 import example.fastec.hulk.com.pot_core.net.callback.IFailure;
+import example.fastec.hulk.com.pot_core.net.callback.IRequest;
 import example.fastec.hulk.com.pot_core.net.callback.ISuccess;
 
 /**
@@ -27,6 +28,17 @@ public class ExampleDelegate extends PotDelegate {
     private void testRestClient() {
         RestClient.builder()
                 .url("http://news.baidu.com")
+//                .request(new IRequest() {
+//                    @Override
+//                    public void onRequestStart() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onRequestEnd() {
+//
+//                    }
+//                })
 //                .params("", "")
                 .loader(getContext())
                 .success(new ISuccess() {

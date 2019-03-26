@@ -11,7 +11,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import example.fastec.hulk.com.pot_core.R;
-import example.fastec.hulk.com.pot_core.util.DimenUtil;
+import example.fastec.hulk.com.pot_core.util.dimen.DimenUtil;
 
 /**
  * Created by fuzhi on 2019/3/24
