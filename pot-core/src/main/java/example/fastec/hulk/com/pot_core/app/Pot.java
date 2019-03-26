@@ -3,7 +3,6 @@ package example.fastec.hulk.com.pot_core.app;
 import android.content.Context;
 
 import java.util.HashMap;
-import java.util.WeakHashMap;
 
 /**
  * Created by fuzhi on 2019/3/18
@@ -15,19 +14,22 @@ public final class Pot {
      * @return
      */
     public static Configurator init(Context context) {
-        getConfiguration().put(ConfigType.APPLICATION_CONTEXT.name(), context.getApplicationContext());
+        Configurator.getInstance()
+                .getPotConfigs()
+                .put(ConfigKeys.APPLICATION_CONTEXT,
+                        context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    /**
-     * 获取配置信息
-     * @return
-     */
-    public static HashMap<String , Object> getConfiguration() {
-        return Configurator.getInstance().getPotConfigs();
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
     }
 
-    public static Context getApplication() {
-        return (Context) getConfiguration().get(ConfigType.APPLICATION_CONTEXT.name());
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfiguration(key);
+    }
+
+    public static Context getApplicationContext() {
+        return (Context) getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
 }

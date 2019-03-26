@@ -10,13 +10,13 @@ import example.fastec.hulk.com.pot_core.app.Pot;
  */
 public class DimenUtil {
     public static int getScreenWidth() {
-        final Resources resources = Pot.getApplication().getResources();
+        final Resources resources = Pot.getApplicationContext().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
         return dm.widthPixels;
     }
 
     public static int getScreenHeight() {
-        final Resources resources = Pot.getApplication().getResources();
+        final Resources resources = Pot.getApplicationContext().getResources();
         final DisplayMetrics dm = resources.getDisplayMetrics();
         return dm.heightPixels;
     }

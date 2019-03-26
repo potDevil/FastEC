@@ -5,20 +5,24 @@ import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.WeakHashMap;
+
+import okhttp3.Interceptor;
 
 /**
  * Created by fuzhi on 2019/3/20
  */
 public class Configurator {
-    private static final HashMap<String, Object> POT_CONFIGS = new HashMap<>();
+
+    private static final HashMap<Object, Object> POT_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     /**
      * 构造函数
      */
     private Configurator() {
-        POT_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        POT_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
     }
 
     public static Configurator getInstance() {
@@ -37,7 +41,7 @@ public class Configurator {
      *
      * @return
      */
-    final HashMap<String, Object> getPotConfigs() {
+    final HashMap<Object, Object> getPotConfigs() {
         return POT_CONFIGS;
     }
 
@@ -46,7 +50,7 @@ public class Configurator {
      */
     public final void configure() {
         initIcons();
-        POT_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
+        POT_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
     }
 
     /**
@@ -56,7 +60,7 @@ public class Configurator {
      * @return
      */
     public final Configurator withApiHost(String host) {
-        POT_CONFIGS.put(ConfigType.API_HOST.name(), host);
+        POT_CONFIGS.put(ConfigKeys.API_HOST, host);
         return this;
     }
 
@@ -80,11 +84,23 @@ public class Configurator {
         return this;
     }
 
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        POT_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptor(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        POT_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
     /**
      * 检查配置是否完成
      */
     private void checkConfiguration() {
-        final boolean isReady = (boolean) POT_CONFIGS.get(ConfigType.CONFIG_READY);
+        final boolean isReady = (boolean) POT_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {
             throw new RuntimeException("Configuration is not ready, Call Configure");
         }
@@ -98,8 +114,12 @@ public class Configurator {
      * @return
      */
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        return (T) POT_CONFIGS.get(key.name());
+        final Object value = POT_CONFIGS.get(key);
+        if (value == null) {
+            throw new NullPointerException(key.toString() + " IS NULL");
+        }
+        return (T) POT_CONFIGS.get(key);
     }
 }
