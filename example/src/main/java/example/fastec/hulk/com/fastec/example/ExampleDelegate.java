@@ -27,19 +27,7 @@ public class ExampleDelegate extends PotDelegate {
 
     private void testRestClient() {
         RestClient.builder()
-                .url("http://news.baidu.com")
-//                .request(new IRequest() {
-//                    @Override
-//                    public void onRequestStart() {
-//
-//                    }
-//
-//                    @Override
-//                    public void onRequestEnd() {
-//
-//                    }
-//                })
-//                .params("", "")
+                .url("http://127.0.0.1/index")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override

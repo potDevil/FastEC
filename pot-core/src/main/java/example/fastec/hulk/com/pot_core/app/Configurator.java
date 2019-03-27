@@ -15,7 +15,6 @@ public class Configurator {
 
     private static final HashMap<Object, Object> POT_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
-
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     /**
@@ -84,6 +83,11 @@ public class Configurator {
         return this;
     }
 
+    /**
+     * 配置拦截器
+     * @param interceptor
+     * @return
+     */
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
         POT_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
