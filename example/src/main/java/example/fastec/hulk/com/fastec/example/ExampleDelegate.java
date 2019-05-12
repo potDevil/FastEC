@@ -1,6 +1,9 @@
 package example.fastec.hulk.com.fastec.example;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import example.fastec.hulk.com.fastec.R;
@@ -21,7 +24,7 @@ public class ExampleDelegate extends PotDelegate {
     }
 
     @Override
-    public void onBindView() {
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         testRestClient();
     }
 

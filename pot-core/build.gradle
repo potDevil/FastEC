@@ -46,8 +46,11 @@ dependencies {
     api 'com.squareup.retrofit2:converter-scalars:2.5.0'
     // Loading
     api 'com.wang.avi:library:2.1.3'
-//    // Json
-//    api 'com.alibaba:fastjson:1.1.68.android'
+    // Json
+    api 'com.alibaba:fastjson:1.1.68.android'
+    // Banner依赖
+    api 'com.bigkoo:ConvenientBanner:2.1.4'
+    api 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
 //    // Log
 //    api 'com.orhanobut:logger:2.2.0'
 }
