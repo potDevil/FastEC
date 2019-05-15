@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.pot_core.ui;
+package example.fastec.hulk.com.pot_core.ui.loader;
 
 import android.content.Context;
 

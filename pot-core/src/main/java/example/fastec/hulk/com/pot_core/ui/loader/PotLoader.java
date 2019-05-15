@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.pot_core.ui;
+package example.fastec.hulk.com.pot_core.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
@@ -11,6 +11,8 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import example.fastec.hulk.com.pot_core.R;
+import example.fastec.hulk.com.pot_core.ui.loader.LoaderCreator;
+import example.fastec.hulk.com.pot_core.ui.loader.LoaderStyle;
 import example.fastec.hulk.com.pot_core.util.dimen.DimenUtil;
 
 /**

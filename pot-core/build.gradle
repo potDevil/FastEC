@@ -50,6 +50,7 @@ dependencies {
     api 'com.alibaba:fastjson:1.1.68.android'
     // Banner依赖
     api 'com.bigkoo:ConvenientBanner:2.1.4'
+    api 'com.android.support:recyclerview-v7:27.1.1'
     api 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:1.2.32@aar'
 //    // Log
 //    api 'com.orhanobut:logger:2.2.0'

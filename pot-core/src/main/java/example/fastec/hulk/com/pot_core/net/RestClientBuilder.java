@@ -3,14 +3,13 @@ package example.fastec.hulk.com.pot_core.net;
 import android.content.Context;
 
 import java.io.File;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 import example.fastec.hulk.com.pot_core.net.callback.IError;
 import example.fastec.hulk.com.pot_core.net.callback.IFailure;
 import example.fastec.hulk.com.pot_core.net.callback.IRequest;
 import example.fastec.hulk.com.pot_core.net.callback.ISuccess;
-import example.fastec.hulk.com.pot_core.ui.LoaderStyle;
+import example.fastec.hulk.com.pot_core.ui.loader.LoaderStyle;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 

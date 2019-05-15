@@ -1,4 +1,4 @@
-package example.fastec.hulk.com.pot_core.ui;
+package example.fastec.hulk.com.pot_core.ui.loader;
 
 /**
  * Created by fuzhi on 2019/3/24

@@ -3,8 +3,8 @@ package example.fastec.hulk.com.pot_core.net.callback;
 import android.os.Handler;
 import android.util.Log;
 
-import example.fastec.hulk.com.pot_core.ui.LoaderStyle;
-import example.fastec.hulk.com.pot_core.ui.PotLoader;
+import example.fastec.hulk.com.pot_core.ui.loader.LoaderStyle;
+import example.fastec.hulk.com.pot_core.ui.loader.PotLoader;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
